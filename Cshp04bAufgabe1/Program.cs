@@ -285,9 +285,9 @@ namespace Cshp04bAufgabe1
                     case 3:
                         Aendern(kisten);
                         break;
-                    case 4:
-                        Anzeigen(kisten);
-                        break;
+                    //case 4:
+                    //    Anzeigen(kisten);
+                    //    break;
                     case 5:
                         Listenfunktion(kisten);
                         break;
