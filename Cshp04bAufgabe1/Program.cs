@@ -1,6 +1,6 @@
-﻿/*
- Einsendeaufgabe 4
- */
+﻿/* ######################################################
+Einsendeaufgabe 4
+###################################################### */
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,114 +21,42 @@ namespace Cshp04bAufgabe1
 
         }
   
-        //
-        static void TasteDruecken()
+        // die Methode zum Berechnen des Volumens
+        static int Volumen(Kiste aKiste)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
+            int volWert;
+            volWert = aKiste.Breite * aKiste.Laenge * aKiste.Hoehe;
+
+            return volWert;
         }
 
-        // Titel
-        static void Title(string msg)
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine();
-            Console.WriteLine("\t"+msg);
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        // das Hauptmenu
-        static int HauptMenu()
-        {
-            Console.Clear();
-
-            Title("Hauptmenu");
-
-            int menuWahl;
-
-            Console.WriteLine("\tSie haben folgende Auswahl:");
-            Console.WriteLine("\t   1. Eingeben einer neuen Kiste");
-            Console.WriteLine("\t   2. Löschen der Daten einer Kiste");
-            Console.WriteLine("\t   3. Ändern der Daten einer Kiste");
-            Console.WriteLine("\t   4. Anzeigen der Daten einer Kiste");
-            Console.WriteLine("\t   5. Auflisten die Daten aller Kisten");
-            Console.WriteLine("\t   6. Ende");
-            Console.Write("\tWas möchten Sie tun? ");
-            menuWahl = Convert.ToInt32(Console.ReadLine());
-
-            return menuWahl;
-        }
-
-        // Listenfunktion
-        static void Listenfunktion(Kiste[] aKiste)
-        {
-            Title("Liste der Kisten im Lager");
-
-            int nReihe;
-
-            // Kopf
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("\tKiste");
-            Console.Write("\tHöhe");
-            Console.Write("\tLänge");
-            Console.Write("\tBreite");
-            Console.Write("\tVolumen");
-            Console.WriteLine("\n");
-            Console.ForegroundColor = ConsoleColor.White;
-
-            nReihe = 0;
-            for (int index = 0; index < 50; ++index)
-            {
-                if (aKiste[index].Nummer != 0)
-                {
-                    Console.Write("\t" + aKiste[index].Nummer);
-                    Console.Write("\t" + aKiste[index].Hoehe);
-                    Console.Write("\t" + aKiste[index].Laenge);
-                    Console.Write("\t" + aKiste[index].Breite);
-                    Console.Write("\t" + Volumen(aKiste[index]));
-                    Console.WriteLine();
-                    ++nReihe;
-                }
-            }
-            if (nReihe == 0)
-            {
-                Console.WriteLine("\tEs gibt keine Kiste auf Lager.");
-            }
-            TasteDruecken();
-        }
-        
         // die Methode zum Einlesen
-        static void Einlesen(Kiste[] aKiste)
+        static void Eingeben(Kiste[] aKiste)
         {
-            Title("Eingabe einer neuen Kiste");
+            Console.Clear();
+            Console.WriteLine("\n\tEingeben\n");
 
-            int index;
             int nummer;
-            
+
             Console.Write("\tGeben Sie die Nummer der Kiste ein, zwischen 1 und 50: ");
             // die nummer ist index + 1
             nummer = Convert.ToInt32(Console.ReadLine());
-            index = nummer - 1;
-
+            
             // Nummer ist gültig
-            if (index >= 0 && index < 50)
+            if (nummer >= 1 && nummer <= 50)
             {
                 //
-                if ( aKiste[index].Nummer == 0 )
+                if (aKiste[nummer-1].Nummer == 0)
                 {
                     int hoehe, breite, laenge;
 
-                    Console.Write("\tGeben Sie die Höhe der Kiste #{0} ein  : ", index + 1);
+                    Console.Write("\tGeben Sie die Höhe der Kiste #{0} ein  : ", nummer);
                     hoehe = Convert.ToInt32(Console.ReadLine());
 
-                    Console.Write("\tGeben Sie die Länge der Kiste #{0} ein : ", index + 1);
+                    Console.Write("\tGeben Sie die Länge der Kiste #{0} ein : ", nummer);
                     laenge = Convert.ToInt32(Console.ReadLine());
 
-                    Console.Write("\tGeben Sie die Breite der Kiste #{0} ein: ", index + 1);
+                    Console.Write("\tGeben Sie die Breite der Kiste #{0} ein: ", nummer);
                     breite = Convert.ToInt32(Console.ReadLine());
 
                     if (hoehe <= 0 || breite <= 0 || laenge <= 0)
@@ -137,29 +65,68 @@ namespace Cshp04bAufgabe1
                     }
                     else
                     {
-                        aKiste[index].Nummer = index + 1;
-                        aKiste[index].Hoehe = hoehe;
-                        aKiste[index].Breite = breite;
-                        aKiste[index].Laenge = laenge;
+                        aKiste[nummer-1].Nummer = nummer;
+                        aKiste[nummer-1].Hoehe = hoehe;
+                        aKiste[nummer-1].Breite = breite;
+                        aKiste[nummer-1].Laenge = laenge;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist schon benutzt.",nummer);
+                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist schon benutzt.", nummer);
                 }
             }
             else
             {
                 Console.WriteLine("\n\tDie eingegebene Nummer der Kiste ist nicht gültig.");
             }
-            TasteDruecken();
+
+            // zurück zum Hauptmenu
+            Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
+            Console.ReadKey();
+
+        }      
  
-        }
+        // die Methode eine Kiste zu Löschen
+        static void Loeschen(Kiste[] aKiste)
+        {
+            Console.Clear();
+            Console.WriteLine("\n\tLöschen\n");
+
+            int nummer;
+
+            Console.Write("\tGeben Sie die Nummer der Kiste ein, zwischen 1 und 50: ");
+            nummer = Convert.ToInt32(Console.ReadLine());
+           
+            // Kiste ist gültig zu Löschen
+            if ( nummer >= 1 && nummer <= 50)
+            {
+                if (aKiste[nummer-1].Nummer != 0)
+                {
+                    Console.WriteLine("\n\tDie Kiste mit dem Nummer {0} wird gelöscht.", nummer);
+                    aKiste[nummer-1].Nummer = 0;
+                }
+                else
+                {
+                    Console.WriteLine("\n\tEs gibt keine Kiste mit dem Nummer {0}.", nummer);
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\tDer eingegebene Nummer der Kiste ist nicht gültig.");
+            }
+
+            // zurück zum Hauptmenu
+            Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
+            Console.ReadKey();
+
+         }
 
         // die Methode zum Ändern
         static void Aendern(Kiste[] aKiste)
         {
-            Title("Ändern der Daten einer Kiste");
+            Console.Clear();
+            Console.WriteLine("\n\tÄndern\n");
 
             int index;
             int nummer;
@@ -173,7 +140,7 @@ namespace Cshp04bAufgabe1
             if (index >= 0 && index < 50)
             {
                 //
-                if ( aKiste[index].Nummer != 0 )
+                if (aKiste[index].Nummer != 0)
                 {
                     int hoehe, breite, laenge;
 
@@ -200,84 +167,150 @@ namespace Cshp04bAufgabe1
                 }
                 else
                 {
-                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist nicht benutzt.\n\tKeine Daten zum Ändern.",nummer);
+                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist nicht auf Lager.", nummer);
                 }
             }
             else
             {
                 Console.WriteLine("\n\tDie eingegebene Nummer der Kiste ist nicht gültig.");
             }
-            TasteDruecken();
+
+            // zurück zum Hauptmenu
+            Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
+            Console.ReadKey();
 
         }
 
-
-        // die Methode eine Kiste zu Löschen
-        static void Loeschen(Kiste[] aKiste)
+        // die Methode zum Anzeigen eine Kiste
+        static void Anzeigen(Kiste[] aKiste)
         {
-            Title("Löschen der Daten einer Kiste");
+            Console.Clear();
+            Console.WriteLine("\n\tAnzeigen\n");
 
-            int index;
             int nummer;
 
             Console.Write("\tGeben Sie die Nummer der Kiste ein, zwischen 1 und 50: ");
+            // die nummer ist index + 1
             nummer = Convert.ToInt32(Console.ReadLine());
-            index = nummer - 1;
 
-            // Kiste ist gültig zu Löschen
-            if (index >= 0 && index < 50)
+            // Nummer ist gültig
+            if (nummer >= 1 && nummer <= 50)
             {
-                if (aKiste[index].Nummer != 0)
+                //
+                if (aKiste[nummer-1].Nummer != 0)
                 {
-                    Console.WriteLine("\n\tDie Kiste mit dem Nummer {0} wird gelöscht.", nummer);
-                    aKiste[index].Nummer = 0;
+                    // Kopf
+                    Console.WriteLine();
+
+                    Console.Write("\tKiste\n");
+                    Console.Write("\tNummer");
+                    Console.Write("\tHöhe");
+                    Console.Write("\tLänge");
+                    Console.Write("\tBreite");
+                    Console.Write("\tVolumen");
+                    Console.WriteLine("\n");
+
+                    Console.Write("\t" + aKiste[nummer-1].Nummer);
+                    Console.Write("\t" + aKiste[nummer-1].Hoehe);
+                    Console.Write("\t" + aKiste[nummer-1].Laenge);
+                    Console.Write("\t" + aKiste[nummer-1].Breite);
+                    Console.Write("\t" + Volumen(aKiste[nummer-1]));
+                    Console.WriteLine();
+ 
                 }
                 else
                 {
-                    Console.WriteLine("\n\tEs gibt keine Kiste mit dem Nummer {0}.", nummer);
+                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist nicht auf Lager.", nummer);
                 }
             }
             else
             {
-                Console.WriteLine("\n\tDer eingegebene Nummer der Kiste ist nicht gültig.");
+                Console.WriteLine("\n\tDie eingegebene Nummer der Kiste ist nicht gültig.");
             }
-            TasteDruecken();
 
-         }
-
-        // die Methode zum Berechnen des Volumens
-        static int Volumen(Kiste aKiste)
-        {
-            int volWert;
-            volWert = aKiste.Breite * aKiste.Laenge * aKiste.Hoehe;
-
-            return volWert;
+            // zurück zum Hauptmenu
+            Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
+            Console.ReadKey();
         }
 
+        // Listenfunktion
+        static void Auflisten(Kiste[] aKiste)
+        {
+            Console.Clear();
+            Console.WriteLine("\n\tAuflisten\n");
+
+            int nReihe;
+
+            // Kopf
+            Console.WriteLine();
+
+            Console.Write("\tKiste\n");
+            Console.Write("\tNummer");
+            Console.Write("\tHöhe");
+            Console.Write("\tLänge");
+            Console.Write("\tBreite");
+            Console.Write("\tVolumen");
+            Console.WriteLine("\n");
+
+            nReihe = 0;
+            for (int index = 0; index < 50; ++index)
+            {
+                if (aKiste[index].Nummer != 0)
+                {
+                    Console.Write("\t" + aKiste[index].Nummer);
+                    Console.Write("\t" + aKiste[index].Hoehe);
+                    Console.Write("\t" + aKiste[index].Laenge);
+                    Console.Write("\t" + aKiste[index].Breite);
+                    Console.Write("\t" + Volumen(aKiste[index]));
+                    Console.WriteLine();
+                    ++nReihe;
+                }
+            }
+            if (nReihe == 0)
+            {
+                Console.WriteLine("\tEs gibt keine Kiste auf Lager.");
+            }
+
+            // zurück zum Hauptmenu
+            Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
+            Console.ReadKey();
+        }
+  
         // die Methode Main
         static void Main(string[] args)
         {
-            // Vereinbarung der Variablen
-            Kiste[] kisten = new Kiste[50];
-            int hauptWahl;
-
-            // Console 
+            // Console      
             Console.Title = "Lagerverwaltung";
             Console.ForegroundColor = ConsoleColor.White;
 
-            
+            // Vereinbarung der Variablen
+            Kiste[] kisten = new Kiste[50];
+         
             // Initialiesierung der Kistennummern
             for (int index = 0; index < 50; ++index)
                 kisten[index].Nummer = 0;
 
+            int menuWahl;
             //  while-Schleife des HauptMenus
             do
             {
-                hauptWahl = HauptMenu();
-                switch (hauptWahl)
+                // das Menu
+                Console.Clear();
+                Console.WriteLine("\n\tHauptmenu\n");
+                Console.WriteLine("\tSie haben folgende Auswahl:");
+                Console.WriteLine("\t   1. Eingeben einer neuen Kiste");
+                Console.WriteLine("\t   2. Löschen der Daten einer Kiste");
+                Console.WriteLine("\t   3. Ändern der Daten einer Kiste");
+                Console.WriteLine("\t   4. Anzeigen der Daten einer Kiste");
+                Console.WriteLine("\t   5. Auflisten die Daten aller Kisten");
+                Console.WriteLine("\t   6. Ende");
+                Console.Write("\tWas möchten Sie tun? ");
+                menuWahl = Convert.ToInt32(Console.ReadLine());
+ 
+                switch (menuWahl)
                 {
                     case 1:
-                        Einlesen(kisten);
+                        Eingeben(kisten);
                         break;
                     case 2:
                         Loeschen(kisten);
@@ -285,33 +318,18 @@ namespace Cshp04bAufgabe1
                     case 3:
                         Aendern(kisten);
                         break;
-                    //case 4:
-                    //    Anzeigen(kisten);
-                    //    break;
+                    case 4:
+                        Anzeigen(kisten);
+                        break;
                     case 5:
-                        Listenfunktion(kisten);
+                        Auflisten(kisten);
                         break;
                     default:
                         break;
                 }
-            } while (hauptWahl != 6);
+            } while (menuWahl != 6);
 
-            //// ein lokales Array kleineKiste für die
-            //// Struktur Kiste
-            //Kiste[] kleineKiste = new Kiste[3];
-
-            //// das Einlesen der Daten über die Methode
-            //// Einlesen()
-            //for (int index = 0; index < 3; index++)
-            //{
-            //    kleineKiste[index] = Einlesen(index + 1);
-            //}
-
-            //// das BErechen über die Methode Volumen()
-            //for (int index = 0; index < 3; index++)
-            //{
-            //    Console.WriteLine("Das Volumen von Kiste {0} ist: {1}", index + 1, Volumen(kleineKiste[index]));
-            //}
+ 
         }
 
     }
