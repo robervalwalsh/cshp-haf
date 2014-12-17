@@ -61,7 +61,8 @@ namespace Cshp04bAufgabe1
 
                     if (hoehe <= 0 || breite <= 0 || laenge <= 0)
                     {
-                        Console.WriteLine("\n\tMindestens eine Seite der Kiste ist Null oder Negative.\n\tDie Kiste wird nicht gespeichert.");
+                        Console.WriteLine("\n\tMindestens eine Seite der Kiste ist Null oder Negative.");
+                        Console.WriteLine("\tDie Kiste wird nicht gespeichert.");
                     }
                     else
                     {
@@ -73,12 +74,12 @@ namespace Cshp04bAufgabe1
                 }
                 else
                 {
-                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist schon benutzt.", nummer);
+                    Console.WriteLine("\n\tDie Nummer {0} ist schon benutzt.", nummer);
                 }
             }
             else
             {
-                Console.WriteLine("\n\tDie eingegebene Nummer der Kiste ist nicht gültig.");
+                Console.WriteLine("\n\tDie eingegebene Nummer ist nicht gültig.");
             }
 
             // zurück zum Hauptmenu
@@ -103,17 +104,17 @@ namespace Cshp04bAufgabe1
             {
                 if (aKiste[nummer-1].Nummer != 0)
                 {
-                    Console.WriteLine("\n\tDie Kiste mit dem Nummer {0} wird gelöscht.", nummer);
+                    Console.WriteLine("\n\tDie Kiste mit der Nummer {0} wird gelöscht.", nummer);
                     aKiste[nummer-1].Nummer = 0;
                 }
                 else
                 {
-                    Console.WriteLine("\n\tEs gibt keine Kiste mit dem Nummer {0}.", nummer);
+                    Console.WriteLine("\n\tEs gibt keine Kiste mit der Nummer {0} auf Lager.", nummer);
                 }
             }
             else
             {
-                Console.WriteLine("\n\tDer eingegebene Nummer der Kiste ist nicht gültig.");
+                Console.WriteLine("\n\tDer eingegebene Nummer ist nicht gültig.");
             }
 
             // zurück zum Hauptmenu
@@ -155,7 +156,8 @@ namespace Cshp04bAufgabe1
 
                     if (hoehe <= 0 || breite <= 0 || laenge <= 0)
                     {
-                        Console.WriteLine("\n\tMindestens eine Seite ist Null oder Negative.\n\tDie Daten wird nicht geämdert.");
+                        Console.WriteLine("\n\tMindestens eine Seite ist Null oder Negative.");
+                        Console.WriteLine("\tDie Daten wird nicht geändert.");
                     }
                     else
                     {
@@ -167,12 +169,12 @@ namespace Cshp04bAufgabe1
                 }
                 else
                 {
-                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist nicht auf Lager.", nummer);
+                    Console.WriteLine("\n\tEs gibt keine Kiste mit der Nummer {0} auf Lager.", nummer);
                 }
             }
             else
             {
-                Console.WriteLine("\n\tDie eingegebene Nummer der Kiste ist nicht gültig.");
+                Console.WriteLine("\n\tDie eingegebene Nummer ist nicht gültig.");
             }
 
             // zurück zum Hauptmenu
@@ -220,12 +222,12 @@ namespace Cshp04bAufgabe1
                 }
                 else
                 {
-                    Console.WriteLine("\n\tDie Kiste Nummer {0} ist nicht auf Lager.", nummer);
+                    Console.WriteLine("\n\tEs gibt keine Kiste mit der Nummer {0} auf Lager.", nummer);
                 }
             }
             else
             {
-                Console.WriteLine("\n\tDie eingegebene Nummer der Kiste ist nicht gültig.");
+                Console.WriteLine("\n\tDie eingegebene Nummer ist nicht gültig.");
             }
 
             // zurück zum Hauptmenu
@@ -241,7 +243,6 @@ namespace Cshp04bAufgabe1
 
             int nReihe;
 
-            // Kopf
             Console.WriteLine();
 
             Console.Write("\tKiste\n");
