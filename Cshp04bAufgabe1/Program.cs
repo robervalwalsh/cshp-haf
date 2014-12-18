@@ -31,7 +31,7 @@ namespace Cshp04bAufgabe1
         }
 
         // die Methode zum Einlesen
-        static void Eingeben(Kiste[] aKiste)
+        static void Eingeben(Kiste[] aKisten)
         {
             Console.Clear();
             Console.WriteLine("\n\tEingeben\n");
@@ -46,7 +46,7 @@ namespace Cshp04bAufgabe1
             if (nummer >= 1 && nummer <= 50)
             {
                 //
-                if (aKiste[nummer-1].Nummer == 0)
+                if (aKisten[nummer-1].Nummer == 0)
                 {
                     int hoehe, breite, laenge;
 
@@ -66,10 +66,10 @@ namespace Cshp04bAufgabe1
                     }
                     else
                     {
-                        aKiste[nummer-1].Nummer = nummer;
-                        aKiste[nummer-1].Hoehe = hoehe;
-                        aKiste[nummer-1].Breite = breite;
-                        aKiste[nummer-1].Laenge = laenge;
+                        aKisten[nummer-1].Nummer = nummer;
+                        aKisten[nummer-1].Hoehe = hoehe;
+                        aKisten[nummer-1].Breite = breite;
+                        aKisten[nummer-1].Laenge = laenge;
                     }
                 }
                 else
@@ -89,7 +89,7 @@ namespace Cshp04bAufgabe1
         }      
  
         // die Methode eine Kiste zu Löschen
-        static void Loeschen(Kiste[] aKiste)
+        static void Loeschen(Kiste[] aKisten)
         {
             Console.Clear();
             Console.WriteLine("\n\tLöschen\n");
@@ -102,10 +102,10 @@ namespace Cshp04bAufgabe1
             // Kiste ist gültig zu Löschen
             if ( nummer >= 1 && nummer <= 50)
             {
-                if (aKiste[nummer-1].Nummer != 0)
+                if (aKisten[nummer-1].Nummer != 0)
                 {
                     Console.WriteLine("\n\tDie Kiste mit der Nummer {0} wird gelöscht.", nummer);
-                    aKiste[nummer-1].Nummer = 0;
+                    aKisten[nummer-1].Nummer = 0;
                 }
                 else
                 {
@@ -124,7 +124,7 @@ namespace Cshp04bAufgabe1
          }
 
         // die Methode zum Ändern
-        static void Aendern(Kiste[] aKiste)
+        static void Aendern(Kiste[] aKisten)
         {
             Console.Clear();
             Console.WriteLine("\n\tÄndern\n");
@@ -141,7 +141,7 @@ namespace Cshp04bAufgabe1
             if (index >= 0 && index < 50)
             {
                 //
-                if (aKiste[index].Nummer != 0)
+                if (aKisten[index].Nummer != 0)
                 {
                     int hoehe, breite, laenge;
 
@@ -161,10 +161,10 @@ namespace Cshp04bAufgabe1
                     }
                     else
                     {
-                        aKiste[index].Nummer = index + 1;
-                        aKiste[index].Hoehe = hoehe;
-                        aKiste[index].Breite = breite;
-                        aKiste[index].Laenge = laenge;
+                        aKisten[index].Nummer = index + 1;
+                        aKisten[index].Hoehe = hoehe;
+                        aKisten[index].Breite = breite;
+                        aKisten[index].Laenge = laenge;
                     }
                 }
                 else
@@ -184,7 +184,7 @@ namespace Cshp04bAufgabe1
         }
 
         // die Methode zum Anzeigen eine Kiste
-        static void Anzeigen(Kiste[] aKiste)
+        static void Anzeigen(Kiste[] aKisten)
         {
             Console.Clear();
             Console.WriteLine("\n\tAnzeigen\n");
@@ -199,7 +199,7 @@ namespace Cshp04bAufgabe1
             if (nummer >= 1 && nummer <= 50)
             {
                 //
-                if (aKiste[nummer-1].Nummer != 0)
+                if (aKisten[nummer-1].Nummer != 0)
                 {
                     // Kopf
                     Console.WriteLine();
@@ -212,11 +212,11 @@ namespace Cshp04bAufgabe1
                     Console.Write("\tVolumen");
                     Console.WriteLine("\n");
 
-                    Console.Write("\t" + aKiste[nummer-1].Nummer);
-                    Console.Write("\t" + aKiste[nummer-1].Hoehe);
-                    Console.Write("\t" + aKiste[nummer-1].Laenge);
-                    Console.Write("\t" + aKiste[nummer-1].Breite);
-                    Console.Write("\t" + Volumen(aKiste[nummer-1]));
+                    Console.Write("\t" + aKisten[nummer-1].Nummer);
+                    Console.Write("\t" + aKisten[nummer-1].Hoehe);
+                    Console.Write("\t" + aKisten[nummer-1].Laenge);
+                    Console.Write("\t" + aKisten[nummer-1].Breite);
+                    Console.Write("\t" + Volumen(aKisten[nummer-1]));
                     Console.WriteLine();
  
                 }
@@ -236,7 +236,7 @@ namespace Cshp04bAufgabe1
         }
 
         // Listenfunktion
-        static void Auflisten(Kiste[] aKiste)
+        static void Auflisten(Kiste[] aKisten)
         {
             Console.Clear();
             Console.WriteLine("\n\tAuflisten\n");
@@ -256,13 +256,13 @@ namespace Cshp04bAufgabe1
             nReihe = 0;
             for (int index = 0; index < 50; ++index)
             {
-                if (aKiste[index].Nummer != 0)
+                if (aKisten[index].Nummer != 0)
                 {
-                    Console.Write("\t" + aKiste[index].Nummer);
-                    Console.Write("\t" + aKiste[index].Hoehe);
-                    Console.Write("\t" + aKiste[index].Laenge);
-                    Console.Write("\t" + aKiste[index].Breite);
-                    Console.Write("\t" + Volumen(aKiste[index]));
+                    Console.Write("\t" + aKisten[index].Nummer);
+                    Console.Write("\t" + aKisten[index].Hoehe);
+                    Console.Write("\t" + aKisten[index].Laenge);
+                    Console.Write("\t" + aKisten[index].Breite);
+                    Console.Write("\t" + Volumen(aKisten[index]));
                     Console.WriteLine();
                     ++nReihe;
                 }
@@ -299,12 +299,12 @@ namespace Cshp04bAufgabe1
                 Console.Clear();
                 Console.WriteLine("\n\tHauptmenu\n");
                 Console.WriteLine("\tSie haben folgende Auswahl:");
-                Console.WriteLine("\t   1. Eingeben einer neuen Kiste");
-                Console.WriteLine("\t   2. Löschen der Daten einer Kiste");
-                Console.WriteLine("\t   3. Ändern der Daten einer Kiste");
-                Console.WriteLine("\t   4. Anzeigen der Daten einer Kiste");
-                Console.WriteLine("\t   5. Auflisten die Daten aller Kisten");
-                Console.WriteLine("\t   6. Ende");
+                Console.WriteLine("\t   1  Eingeben einer neuen Kiste");
+                Console.WriteLine("\t   2  Löschen der Daten einer Kiste");
+                Console.WriteLine("\t   3  Ändern der Daten einer Kiste");
+                Console.WriteLine("\t   4  Anzeigen der Daten einer Kiste");
+                Console.WriteLine("\t   5  Auflisten die Daten aller Kisten");
+                Console.WriteLine("\t   6  Ende");
                 Console.Write("\tWas möchten Sie tun? ");
                 menuWahl = Convert.ToInt32(Console.ReadLine());
  
