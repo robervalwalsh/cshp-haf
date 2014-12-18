@@ -11,6 +11,8 @@ namespace Cshp04bAufgabe1
 {
     class Program
     {
+
+// ================================================================
         // die Vereinbarung der Struktur
         struct Kiste
         {
@@ -20,7 +22,8 @@ namespace Cshp04bAufgabe1
             public int Laenge;
 
         }
-  
+
+// ================================================================
         // die Methode zum Berechnen des Volumens
         static int Volumen(Kiste aKiste)
         {
@@ -30,6 +33,7 @@ namespace Cshp04bAufgabe1
             return volWert;
         }
 
+// ================================================================
         // die Methode zum Einlesen
         static void Eingeben(Kiste[] aKisten)
         {
@@ -45,32 +49,19 @@ namespace Cshp04bAufgabe1
             // Nummer ist gültig
             if (nummer >= 1 && nummer <= 50)
             {
-                //
+                // Nummer ist noch nicht benutzt - Ok
                 if (aKisten[nummer-1].Nummer == 0)
                 {
-                    int hoehe, breite, laenge;
+                    aKisten[nummer - 1].Nummer = nummer;
 
                     Console.Write("\tGeben Sie die Höhe der Kiste #{0} ein  : ", nummer);
-                    hoehe = Convert.ToInt32(Console.ReadLine());
+                    aKisten[nummer - 1].Hoehe = Convert.ToInt32(Console.ReadLine());
 
                     Console.Write("\tGeben Sie die Länge der Kiste #{0} ein : ", nummer);
-                    laenge = Convert.ToInt32(Console.ReadLine());
+                    aKisten[nummer - 1].Laenge = Convert.ToInt32(Console.ReadLine());
 
                     Console.Write("\tGeben Sie die Breite der Kiste #{0} ein: ", nummer);
-                    breite = Convert.ToInt32(Console.ReadLine());
-
-                    if (hoehe <= 0 || breite <= 0 || laenge <= 0)
-                    {
-                        Console.WriteLine("\n\tMindestens eine Seite der Kiste ist Null oder Negative.");
-                        Console.WriteLine("\tDie Kiste wird nicht gespeichert.");
-                    }
-                    else
-                    {
-                        aKisten[nummer-1].Nummer = nummer;
-                        aKisten[nummer-1].Hoehe = hoehe;
-                        aKisten[nummer-1].Breite = breite;
-                        aKisten[nummer-1].Laenge = laenge;
-                    }
+                    aKisten[nummer - 1].Breite = Convert.ToInt32(Console.ReadLine());
                 }
                 else
                 {
@@ -86,8 +77,9 @@ namespace Cshp04bAufgabe1
             Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
             Console.ReadKey();
 
-        }      
- 
+        }
+
+// ================================================================
         // die Methode eine Kiste zu Löschen
         static void Loeschen(Kiste[] aKisten)
         {
@@ -102,6 +94,7 @@ namespace Cshp04bAufgabe1
             // Kiste ist gültig zu Löschen
             if ( nummer >= 1 && nummer <= 50)
             {
+                // Die Nummer ist benutzt - Ok
                 if (aKisten[nummer-1].Nummer != 0)
                 {
                     Console.WriteLine("\n\tDie Kiste mit der Nummer {0} wird gelöscht.", nummer);
@@ -123,49 +116,34 @@ namespace Cshp04bAufgabe1
 
          }
 
+// ================================================================
         // die Methode zum Ändern
         static void Aendern(Kiste[] aKisten)
         {
             Console.Clear();
             Console.WriteLine("\n\tÄndern\n");
 
-            int index;
             int nummer;
 
             Console.Write("\tGeben Sie die Nummer der Kiste ein, zwischen 1 und 50: ");
             // die nummer ist index + 1
             nummer = Convert.ToInt32(Console.ReadLine());
-            index = nummer - 1;
 
             // Nummer ist gültig
-            if (index >= 0 && index < 50)
+            if (nummer >= 1 && nummer <= 50)
             {
-                //
-                if (aKisten[index].Nummer != 0)
+                //  Die Nummer ist benutzt - Ok
+                if (aKisten[nummer-1].Nummer != 0)
                 {
-                    int hoehe, breite, laenge;
+                    Console.Write("\tGeben Sie die Höhe der Kiste #{0} ein  : ", nummer);
+                    aKisten[nummer-1].Hoehe = Convert.ToInt32(Console.ReadLine());
 
-                    Console.Write("\tGeben Sie die Höhe der Kiste #{0} ein  : ", index + 1);
-                    hoehe = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("\tGeben Sie die Länge der Kiste #{0} ein : ", nummer);
+                    aKisten[nummer-1].Laenge = Convert.ToInt32(Console.ReadLine());
 
-                    Console.Write("\tGeben Sie die Länge der Kiste #{0} ein : ", index + 1);
-                    laenge = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("\tGeben Sie die Breite der Kiste #{0} ein: ", nummer);
+                    aKisten[nummer-1].Breite = Convert.ToInt32(Console.ReadLine());
 
-                    Console.Write("\tGeben Sie die Breite der Kiste #{0} ein: ", index + 1);
-                    breite = Convert.ToInt32(Console.ReadLine());
-
-                    if (hoehe <= 0 || breite <= 0 || laenge <= 0)
-                    {
-                        Console.WriteLine("\n\tMindestens eine Seite ist Null oder Negative.");
-                        Console.WriteLine("\tDie Daten wird nicht geändert.");
-                    }
-                    else
-                    {
-                        aKisten[index].Nummer = index + 1;
-                        aKisten[index].Hoehe = hoehe;
-                        aKisten[index].Breite = breite;
-                        aKisten[index].Laenge = laenge;
-                    }
                 }
                 else
                 {
@@ -183,6 +161,7 @@ namespace Cshp04bAufgabe1
 
         }
 
+// ================================================================
         // die Methode zum Anzeigen eine Kiste
         static void Anzeigen(Kiste[] aKisten)
         {
@@ -198,7 +177,7 @@ namespace Cshp04bAufgabe1
             // Nummer ist gültig
             if (nummer >= 1 && nummer <= 50)
             {
-                //
+                // Die Nummer ist benutzt - Ok
                 if (aKisten[nummer-1].Nummer != 0)
                 {
                     // Kopf
@@ -235,6 +214,7 @@ namespace Cshp04bAufgabe1
             Console.ReadKey();
         }
 
+// ================================================================
         // Listenfunktion
         static void Auflisten(Kiste[] aKisten)
         {
@@ -276,7 +256,8 @@ namespace Cshp04bAufgabe1
             Console.Write("\nDrücken Sie eine beliebige Taste zum Hauptmenu...");
             Console.ReadKey();
         }
-  
+ 
+// ================================================================
         // die Methode Main
         static void Main(string[] args)
         {
@@ -286,12 +267,12 @@ namespace Cshp04bAufgabe1
 
             // Vereinbarung der Variablen
             Kiste[] kisten = new Kiste[50];
+            int menuWahl;
          
             // Initialiesierung der Kistennummern
             for (int index = 0; index < 50; ++index)
                 kisten[index].Nummer = 0;
-
-            int menuWahl;
+            
             //  while-Schleife des HauptMenus
             do
             {
@@ -308,6 +289,7 @@ namespace Cshp04bAufgabe1
                 Console.Write("\tWas möchten Sie tun? ");
                 menuWahl = Convert.ToInt32(Console.ReadLine());
  
+                // die Menuwahl
                 switch (menuWahl)
                 {
                     case 1:
@@ -329,9 +311,6 @@ namespace Cshp04bAufgabe1
                         break;
                 }
             } while (menuWahl != 6);
-
- 
         }
-
     }
 }
