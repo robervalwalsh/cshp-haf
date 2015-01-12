@@ -19,7 +19,9 @@ namespace Cshp05bAufgabe1
         // Initialisierung
         public void Init()
         {
-            eingeschaltet = false;  // muss mindestens einmal eingeschaltet werden
+            // muss mindestens einmal eingeschaltet werden, also fangen wir mit
+            // dem Fernserher ausgeschaltet an
+            eingeschaltet = false; 
             lautstaerke = 20;
             programm = 1;
         }
@@ -39,7 +41,7 @@ namespace Cshp05bAufgabe1
             return eingeschaltet;
         }
 
-        // Programm ändern - von 1 bis 1000
+        // Programm ändern - von 1 bis 1000?
         public void Programm(int neuProgramm)
         {
             if (eingeschaltet)
@@ -79,7 +81,7 @@ namespace Cshp05bAufgabe1
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("\tAUS\n");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("\n\n\n");
+                Console.Write("\n\n");
             }
         }
 
@@ -98,51 +100,79 @@ namespace Cshp05bAufgabe1
             Console.Clear();
             fernseher.Zustand();
 
+            // Muss mindestens einmal eingeschaltet werden
+            // Frage zur Einschaltung
+            Console.Write("\tDrucken Sie eine beliebige Taste, um den Fernseher einzuschalten.");
+            Console.ReadKey();
+            fernseher.Einschalten();
+
             bool ende;
 
-            ende = true;
+            ende = false;
             do
             {
-                // Muss mindestens einmal eingeschaltet werden
+                int menuWahl;
 
-                // Frage zur Einschaltung
-                Console.Write("\tDrucken Sie eine beliebige Taste, um den Fernseher einzuschalten.");
-                Console.ReadKey();
-                fernseher.Einschalten();
-
-                int einMenuWahl;
+                // Eingeschaltetmenu
                 while (fernseher.Eingeschaltet())
                 {
-                    do
+                    // Menukopf
+                    Console.Clear();
+                    fernseher.Zustand();
+                    Console.WriteLine("\n\tMenu");
+                    Console.WriteLine("\t====");
+                    Console.WriteLine("\tSie haben folgende Auswahl:");
+                    Console.WriteLine("\t 1 Ausschalten");
+                    Console.WriteLine("\t 2 Ändern die Lautstärke");
+                    Console.WriteLine("\t 3 Ändern das Programm");
+                    Console.Write("\tWas möchten Sie tun? ");
+                    menuWahl = Convert.ToInt32(Console.ReadLine());
+                    // die Menuwahl
+                    switch (menuWahl)
                     {
-                        Console.Clear();
-                        fernseher.Zustand();
-                        Console.WriteLine("\n\tMenu");
-                        Console.WriteLine("\t====");
-                        Console.WriteLine("\tSie haben folgende Auswahl:");
-                        Console.WriteLine("\t 1 Ausschalten");
-                        Console.WriteLine("\t 2 Ändern die Lautstärke");
-                        Console.WriteLine("\t 3 Ändern das Programm");
-                        Console.Write("\tWas möchten Sie tun? ");
-                        einMenuWahl = Convert.ToInt32(Console.ReadLine());
-                        // die Menuwahl
-                        switch (einMenuWahl)
-                        {
-                            case 1:
-                                fernseher.Ausschalten();
-                                break;
-                            case 2:
-                                fernseher.Lautstaerke(10);
-                                break;
-                            case 3:
-                                fernseher.Programm(10);
-                                break;
-                            default:
-                                break;
-                        }
-
-                    } while (einMenuWahl != 1);
+                        case 1:
+                            fernseher.Ausschalten();
+                            break;
+                        case 2:
+                            fernseher.Lautstaerke(10);
+                            break;
+                        case 3:
+                            fernseher.Programm(10);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
+                // Ausgeschaltetmenu
+                while (!fernseher.Eingeschaltet() && !ende)
+                {
+                    // Menukopf
+                    Console.Clear();
+                    fernseher.Zustand();
+                    Console.WriteLine("\n\tMenu");
+                    Console.WriteLine("\t====");
+                    Console.WriteLine("\tSie haben folgende Auswahl:");
+                    Console.WriteLine("\t 1 Einschalten");
+                    Console.WriteLine("\t 2 Ende");
+                    Console.Write("\tWas möchten Sie tun? ");
+                    menuWahl = Convert.ToInt32(Console.ReadLine());
+                    // die Menuwahl
+                    switch (menuWahl)
+                    {
+                        case 1:
+                            fernseher.Einschalten();
+                            break;
+                        case 2:
+                            ende = true;
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
+
             } while (!ende);
 
         }
