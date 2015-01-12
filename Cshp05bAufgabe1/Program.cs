@@ -41,23 +41,33 @@ namespace Cshp05bAufgabe1
             return eingeschaltet;
         }
 
-        // Programm ändern - von 1 bis 1000?
-        public void Programm(int neuProgramm)
+        // Programm ändern - von 1 bis 1000 (realistische Begrenzung)
+        public void Programm()
         {
             if (eingeschaltet)
             {
-                if ( neuProgramm > 0 && neuProgramm <= 1000 )
-                    programm = neuProgramm;
+                int neuesProgramm;
+                Console.Write("\n\tGeben Sie das neue Programm ein, zwischen 1 und 1000: ");
+                // 
+                neuesProgramm = Convert.ToInt32(Console.ReadLine());
+                if (neuesProgramm > 0 && neuesProgramm <= 1000)
+                    programm = neuesProgramm;
+                // sonst, keine Veränderung
             }
         }
 
-        // Lautstärke - von 0 bis 100
-        public void Lautstaerke(int neuLaut)
+        // Lautstärke - von 0 bis 100 (realistische Begrenzung) 
+        public void Lautstaerke()
         {
             if (eingeschaltet)
             {
-                if ( neuLaut >= 0 && neuLaut <= 100 )
-                    lautstaerke = neuLaut;
+                int neueLautstaerke;
+                Console.Write("\n\tGeben Sie die neue Lautstaerke ein, zwischen 0 und 100: ");
+                // 
+                neueLautstaerke = Convert.ToInt32(Console.ReadLine());
+                if (neueLautstaerke >= 0 && neueLautstaerke <= 100)
+                    lautstaerke = neueLautstaerke;
+                // sonst, keine Veränderung
             }
         }
 
@@ -97,34 +107,25 @@ namespace Cshp05bAufgabe1
             Fernseher fernseher = new Fernseher();
             fernseher.Init();  // Fernseher ist ausgeschaltet (default)
 
-            Console.Clear();
-            fernseher.Zustand();
-
-            // Muss mindestens einmal eingeschaltet werden
-            // Frage zur Einschaltung
-            Console.Write("\tDrucken Sie eine beliebige Taste, um den Fernseher einzuschalten.");
-            Console.ReadKey();
-            fernseher.Einschalten();
-
+            // Ende des Programmes; muss ausgeschaltet werden
             bool ende;
 
             ende = false;
-            do
+            while (!ende)
             {
                 int menuWahl;
 
                 // Eingeschaltetmenu
                 while (fernseher.Eingeschaltet())
                 {
-                    // Menukopf
                     Console.Clear();
                     fernseher.Zustand();
                     Console.WriteLine("\n\tMenu");
                     Console.WriteLine("\t====");
                     Console.WriteLine("\tSie haben folgende Auswahl:");
-                    Console.WriteLine("\t 1 Ausschalten");
-                    Console.WriteLine("\t 2 Ändern die Lautstärke");
-                    Console.WriteLine("\t 3 Ändern das Programm");
+                    Console.WriteLine("\t1 Ausschalten");
+                    Console.WriteLine("\t2 Ändern die Lautstärke");
+                    Console.WriteLine("\t3 Ändern das Programm");
                     Console.Write("\tWas möchten Sie tun? ");
                     menuWahl = Convert.ToInt32(Console.ReadLine());
                     // die Menuwahl
@@ -134,10 +135,10 @@ namespace Cshp05bAufgabe1
                             fernseher.Ausschalten();
                             break;
                         case 2:
-                            fernseher.Lautstaerke(10);
+                            fernseher.Lautstaerke();
                             break;
                         case 3:
-                            fernseher.Programm(10);
+                            fernseher.Programm();
                             break;
                         default:
                             break;
@@ -147,14 +148,13 @@ namespace Cshp05bAufgabe1
                 // Ausgeschaltetmenu
                 while (!fernseher.Eingeschaltet() && !ende)
                 {
-                    // Menukopf
                     Console.Clear();
                     fernseher.Zustand();
                     Console.WriteLine("\n\tMenu");
                     Console.WriteLine("\t====");
                     Console.WriteLine("\tSie haben folgende Auswahl:");
-                    Console.WriteLine("\t 1 Einschalten");
-                    Console.WriteLine("\t 2 Ende");
+                    Console.WriteLine("\t1 Einschalten");
+                    Console.WriteLine("\t2 Ende");
                     Console.Write("\tWas möchten Sie tun? ");
                     menuWahl = Convert.ToInt32(Console.ReadLine());
                     // die Menuwahl
@@ -173,7 +173,8 @@ namespace Cshp05bAufgabe1
                 }
 
 
-            } while (!ende);
+            }
+            Console.WriteLine();
 
         }
     }
