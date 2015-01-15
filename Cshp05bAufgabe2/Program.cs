@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* ######################################################
+Einsendeaufgabe 5.2
+###################################################### */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,7 +79,7 @@ namespace Cshp05bAufgabe2
             listenEnde = listenAnfang;
 
             // weitere Elemente in einer Schleife anfügen
-            for (int element = 2; element < 10; element++)
+            for (int element = 2; element < 4; element++)
             {
                 // neue Elemente werden direkt am Ende der Liste angehängt
                 listenEnde = listenEnde.Anhaengen("Element " + element);
