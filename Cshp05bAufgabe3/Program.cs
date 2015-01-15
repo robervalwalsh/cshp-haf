@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cshp05bAufgabe2
+namespace Cshp05bAufgabe3
 {
-
     // die Klasse für die Listenelement
     // jetzt auch mit Methoden
 
@@ -14,12 +13,6 @@ namespace Cshp05bAufgabe2
     {
         string daten;
         Listenelement naechster;
-        Listenelement listenEnde;
-
-        public void Init(Listenelement ende)
-        {
-            listenEnde = ende;
-        }
 
         // die Methode zum Setzen der Daten
         public void SetDaten(string datenNeu)
@@ -34,25 +27,29 @@ namespace Cshp05bAufgabe2
         // die Methode zum Anhängen eines neuen Elements
         // sie ruft sich rekursiv auf, bis das Ende erreicht ist
         // Zurücklieferung des Endes der Liste
-        public Listenelement Anhaengen(string datenNeu)
+        public void Anhaengen(string datenNeu)
         {
-            listenEnde.naechster = new Listenelement();
-            listenEnde = listenEnde.naechster;
-            listenEnde.SetDaten(datenNeu);
+            // wenn das Ende erreicht ist, ein neues Element erzeugen
+            if (naechster == null)
+            {
+                naechster = new Listenelement();
+                naechster.SetDaten(datenNeu);
+            }
+            // sonst ruft sich die Methode selbst wieder auf
+            else
+                naechster.Anhaengen(datenNeu);
 
             // zur Veranschaulichung der Rekursion
             Console.WriteLine("Daten {0} wurden eingefügt.", datenNeu);
 
-            return listenEnde;
- 
         }
 
-        // die Methode zur Ausgabe der Liste
+        // die MEthode zur Ausgabe der Liste
         // sie ruft sich ebenfalls rekursiv auf, bis das Ende erreicht ist
         public void Ausgeben()
         {
             Console.WriteLine(daten);
-            if (naechster != null )
+            if (naechster != null)
                 naechster.Ausgeben();
         }
     }
@@ -63,8 +60,6 @@ namespace Cshp05bAufgabe2
         {
             // ein neues Listenelement erzeugen
             Listenelement listenAnfang = new Listenelement();
-            Listenelement listenEnde = new Listenelement();
-            listenAnfang.Init(listenEnde);
 
             // die Daten im ersten Listenelement setzen
             listenAnfang.SetDaten("Element 1");
@@ -72,12 +67,12 @@ namespace Cshp05bAufgabe2
             // weitere Elemente in einer Schleife anfügen
             for (int element = 2; element < 4; element++)
             {
-                listenEnde = listenAnfang.Anhaengen("Element " + element);
+                listenAnfang.Anhaengen("Element " + element);
             }
 
             // die Liste ausgeben
             listenAnfang.Ausgeben();
-         
+
         }
     }
 }
