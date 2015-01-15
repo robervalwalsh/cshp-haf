@@ -26,7 +26,6 @@ namespace Cshp05bAufgabe3
 
         // die Methode zum Anhängen eines neuen Elements
         // sie ruft sich rekursiv auf, bis das Ende erreicht ist
-        // Zurücklieferung des Endes der Liste
         public void Anhaengen(string datenNeu)
         {
             // wenn das Ende erreicht ist, ein neues Element erzeugen
