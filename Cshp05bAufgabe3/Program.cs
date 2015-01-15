@@ -44,7 +44,7 @@ namespace Cshp05bAufgabe3
 
         }
 
-        // die MEthode zur Ausgabe der Liste
+        // die Methode zur Ausgabe der Liste
         // sie ruft sich ebenfalls rekursiv auf, bis das Ende erreicht ist
         public void Ausgeben()
         {
@@ -52,6 +52,15 @@ namespace Cshp05bAufgabe3
             if (naechster != null)
                 naechster.Ausgeben();
         }
+        // die Methode zur Ausgabe der Liste Rückwärts
+        // sie ruft sich ebenfalls rekursiv auf, bis das Ende erreicht ist
+        public void AusgebenRueckwaerts()
+        {
+            if (naechster != null)
+                naechster.AusgebenRueckwaerts();
+            Console.WriteLine(daten);
+        }
+
     }
 
     class Program
@@ -71,7 +80,7 @@ namespace Cshp05bAufgabe3
             }
 
             // die Liste ausgeben
-            listenAnfang.Ausgeben();
+            listenAnfang.AusgebenRueckwaerts();
 
         }
     }
