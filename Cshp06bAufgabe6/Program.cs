@@ -47,7 +47,7 @@ namespace Cshp06bAufgabe6
             this.fluegellaenge = fluegellaenge;
         }
 
-        // die Methode zum Essem
+        // die überschriebene Methode zum Essem
         public override void Essen()
         {
             laenge = laenge + 1;
@@ -55,7 +55,7 @@ namespace Cshp06bAufgabe6
             fluegellaenge = fluegellaenge + 1;
         }
 
-        // die Methode zur Ausgabe
+        // die überschriebene Methode zur Ausgabe
         public override void Ausgabe()
         {
             Console.WriteLine("Die Libelle ist {0} cm lang,  wiegt {1} Gramm und ihre Fügel sind {2} cm lang.", laenge, gewicht, fluegellaenge);
