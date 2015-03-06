@@ -50,6 +50,7 @@
             this.buttonBerechnen.TabIndex = 0;
             this.buttonBerechnen.Text = "Berechnen";
             this.buttonBerechnen.UseVisualStyleBackColor = true;
+            this.buttonBerechnen.Click += new System.EventHandler(this.buttonBerechnen_Click);
             // 
             // buttonBeenden
             // 
