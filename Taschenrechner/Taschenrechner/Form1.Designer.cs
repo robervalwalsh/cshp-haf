@@ -35,10 +35,10 @@
             this.textBoxZahl1 = new System.Windows.Forms.TextBox();
             this.textBoxZahl2 = new System.Windows.Forms.TextBox();
             this.groupBoxRechenoperation = new System.Windows.Forms.GroupBox();
-            this.radioButtonAddition = new System.Windows.Forms.RadioButton();
-            this.radioButtonSubtraktion = new System.Windows.Forms.RadioButton();
-            this.radioButtonDivision = new System.Windows.Forms.RadioButton();
             this.radioButtonMultiplikation = new System.Windows.Forms.RadioButton();
+            this.radioButtonDivision = new System.Windows.Forms.RadioButton();
+            this.radioButtonSubtraktion = new System.Windows.Forms.RadioButton();
+            this.radioButtonAddition = new System.Windows.Forms.RadioButton();
             this.groupBoxRechenoperation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,20 +46,21 @@
             // 
             this.buttonBerechnen.Location = new System.Drawing.Point(12, 125);
             this.buttonBerechnen.Name = "buttonBerechnen";
-            this.buttonBerechnen.Size = new System.Drawing.Size(78, 23);
-            this.buttonBerechnen.TabIndex = 0;
+            this.buttonBerechnen.Size = new System.Drawing.Size(100, 23);
+            this.buttonBerechnen.TabIndex = 4;
             this.buttonBerechnen.Text = "Berechnen";
             this.buttonBerechnen.UseVisualStyleBackColor = true;
             this.buttonBerechnen.Click += new System.EventHandler(this.buttonBerechnen_Click);
             // 
             // buttonBeenden
             // 
-            this.buttonBeenden.Location = new System.Drawing.Point(297, 125);
+            this.buttonBeenden.Location = new System.Drawing.Point(262, 125);
             this.buttonBeenden.Name = "buttonBeenden";
-            this.buttonBeenden.Size = new System.Drawing.Size(75, 23);
-            this.buttonBeenden.TabIndex = 1;
+            this.buttonBeenden.Size = new System.Drawing.Size(100, 23);
+            this.buttonBeenden.TabIndex = 5;
             this.buttonBeenden.Text = "Beenden";
             this.buttonBeenden.UseVisualStyleBackColor = true;
+            this.buttonBeenden.Click += new System.EventHandler(this.buttonBeenden_Click);
             // 
             // labelBeschreibung
             // 
@@ -67,7 +68,7 @@
             this.labelBeschreibung.Location = new System.Drawing.Point(12, 109);
             this.labelBeschreibung.Name = "labelBeschreibung";
             this.labelBeschreibung.Size = new System.Drawing.Size(54, 13);
-            this.labelBeschreibung.TabIndex = 2;
+            this.labelBeschreibung.TabIndex = 4;
             this.labelBeschreibung.Text = "Ergebnis: ";
             // 
             // labelAnzeige
@@ -76,7 +77,7 @@
             this.labelAnzeige.Location = new System.Drawing.Point(72, 109);
             this.labelAnzeige.Name = "labelAnzeige";
             this.labelAnzeige.Size = new System.Drawing.Size(13, 13);
-            this.labelAnzeige.TabIndex = 3;
+            this.labelAnzeige.TabIndex = 4;
             this.labelAnzeige.Text = "0";
             // 
             // textBoxZahl1
@@ -84,7 +85,7 @@
             this.textBoxZahl1.Location = new System.Drawing.Point(12, 12);
             this.textBoxZahl1.Name = "textBoxZahl1";
             this.textBoxZahl1.Size = new System.Drawing.Size(100, 20);
-            this.textBoxZahl1.TabIndex = 4;
+            this.textBoxZahl1.TabIndex = 1;
             this.textBoxZahl1.Text = "0";
             // 
             // textBoxZahl2
@@ -92,7 +93,7 @@
             this.textBoxZahl2.Location = new System.Drawing.Point(12, 39);
             this.textBoxZahl2.Name = "textBoxZahl2";
             this.textBoxZahl2.Size = new System.Drawing.Size(100, 20);
-            this.textBoxZahl2.TabIndex = 5;
+            this.textBoxZahl2.TabIndex = 2;
             this.textBoxZahl2.Text = "0";
             // 
             // groupBoxRechenoperation
@@ -101,12 +102,42 @@
             this.groupBoxRechenoperation.Controls.Add(this.radioButtonDivision);
             this.groupBoxRechenoperation.Controls.Add(this.radioButtonSubtraktion);
             this.groupBoxRechenoperation.Controls.Add(this.radioButtonAddition);
-            this.groupBoxRechenoperation.Location = new System.Drawing.Point(172, 12);
+            this.groupBoxRechenoperation.Location = new System.Drawing.Point(252, 12);
             this.groupBoxRechenoperation.Name = "groupBoxRechenoperation";
-            this.groupBoxRechenoperation.Size = new System.Drawing.Size(200, 110);
-            this.groupBoxRechenoperation.TabIndex = 6;
+            this.groupBoxRechenoperation.Size = new System.Drawing.Size(120, 110);
+            this.groupBoxRechenoperation.TabIndex = 3;
             this.groupBoxRechenoperation.TabStop = false;
             this.groupBoxRechenoperation.Text = "Rechenoperation";
+            // 
+            // radioButtonMultiplikation
+            // 
+            this.radioButtonMultiplikation.AutoSize = true;
+            this.radioButtonMultiplikation.Location = new System.Drawing.Point(6, 87);
+            this.radioButtonMultiplikation.Name = "radioButtonMultiplikation";
+            this.radioButtonMultiplikation.Size = new System.Drawing.Size(86, 17);
+            this.radioButtonMultiplikation.TabIndex = 3;
+            this.radioButtonMultiplikation.Text = "Multiplikation";
+            this.radioButtonMultiplikation.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDivision
+            // 
+            this.radioButtonDivision.AutoSize = true;
+            this.radioButtonDivision.Location = new System.Drawing.Point(6, 64);
+            this.radioButtonDivision.Name = "radioButtonDivision";
+            this.radioButtonDivision.Size = new System.Drawing.Size(62, 17);
+            this.radioButtonDivision.TabIndex = 2;
+            this.radioButtonDivision.Text = "Division";
+            this.radioButtonDivision.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSubtraktion
+            // 
+            this.radioButtonSubtraktion.AutoSize = true;
+            this.radioButtonSubtraktion.Location = new System.Drawing.Point(6, 41);
+            this.radioButtonSubtraktion.Name = "radioButtonSubtraktion";
+            this.radioButtonSubtraktion.Size = new System.Drawing.Size(79, 17);
+            this.radioButtonSubtraktion.TabIndex = 1;
+            this.radioButtonSubtraktion.Text = "Subtraktion";
+            this.radioButtonSubtraktion.UseVisualStyleBackColor = true;
             // 
             // radioButtonAddition
             // 
@@ -120,36 +151,6 @@
             this.radioButtonAddition.Text = "Addition";
             this.radioButtonAddition.UseVisualStyleBackColor = true;
             // 
-            // radioButtonSubtraktion
-            // 
-            this.radioButtonSubtraktion.AutoSize = true;
-            this.radioButtonSubtraktion.Location = new System.Drawing.Point(6, 41);
-            this.radioButtonSubtraktion.Name = "radioButtonSubtraktion";
-            this.radioButtonSubtraktion.Size = new System.Drawing.Size(79, 17);
-            this.radioButtonSubtraktion.TabIndex = 1;
-            this.radioButtonSubtraktion.Text = "Subtraktion";
-            this.radioButtonSubtraktion.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDivision
-            // 
-            this.radioButtonDivision.AutoSize = true;
-            this.radioButtonDivision.Location = new System.Drawing.Point(6, 64);
-            this.radioButtonDivision.Name = "radioButtonDivision";
-            this.radioButtonDivision.Size = new System.Drawing.Size(62, 17);
-            this.radioButtonDivision.TabIndex = 2;
-            this.radioButtonDivision.Text = "Division";
-            this.radioButtonDivision.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonMultiplikation
-            // 
-            this.radioButtonMultiplikation.AutoSize = true;
-            this.radioButtonMultiplikation.Location = new System.Drawing.Point(6, 87);
-            this.radioButtonMultiplikation.Name = "radioButtonMultiplikation";
-            this.radioButtonMultiplikation.Size = new System.Drawing.Size(86, 17);
-            this.radioButtonMultiplikation.TabIndex = 3;
-            this.radioButtonMultiplikation.Text = "Multiplikation";
-            this.radioButtonMultiplikation.UseVisualStyleBackColor = true;
-            // 
             // Taschenrechner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +163,8 @@
             this.Controls.Add(this.labelBeschreibung);
             this.Controls.Add(this.buttonBeenden);
             this.Controls.Add(this.buttonBerechnen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Taschenrechner";
             this.Text = "Ein einfacher Taschenrechner";
             this.groupBoxRechenoperation.ResumeLayout(false);
