@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace TaschenRechnerAufgabe3v1
 {
-    public partial class Form1 : Form
+    public partial class Taschenrechner : Form
     {
-        public Form1()
+        public Taschenrechner()
         {
             InitializeComponent();
         }
+
+        private void Taschenrechner_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
