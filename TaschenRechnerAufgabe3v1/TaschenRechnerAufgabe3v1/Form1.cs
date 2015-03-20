@@ -22,5 +22,56 @@ namespace TaschenRechnerAufgabe3v1
 
         }
 
+        private void buttonBerechen_Click(object sender, EventArgs e)
+        {
+            float zahl1 = 0, zahl2 = 0, ergebnis = 0;
+            bool divDurchNull = false;
+            //die beiden Zahlen einlesen und konvertieren
+            try
+            {
+                zahl1 = Convert.ToSingle(textBoxZahl1.Text);
+            }
+            catch (FormatException)
+            {
+                //bitte in einer Zeile eingeben
+                MessageBox.Show("Ihre Eingabe " + textBoxZahl1.Text + " war nicht gültig. ", "Fehler");
+            }
+            try
+            {
+                zahl2 = Convert.ToSingle(textBoxZahl2.Text);
+            }
+            catch (FormatException)
+            {
+                //bitte in einer Zeile eingeben
+                MessageBox.Show("Ihre Eingabe " + textBoxZahl2.Text + " war nicht gültig. ", "Fehler");
+            }
+
+            //die Rechenoperation ermitteln und ausführen
+            if (radioButtonAddition.Checked == true)
+                ergebnis = zahl1 + zahl2;
+            if (radioButtonSubtraktion.Checked == true)
+                ergebnis = zahl1 - zahl2;
+            if (radioButtonMultiplikation.Checked == true)
+                ergebnis = zahl1 * zahl2;
+            if (radioButtonDivision.Checked == true)
+            {
+                //wird eine Division durch Null versucht?
+                if (zahl2 == 0)
+                    divDurchNull = true;
+                else
+                    ergebnis = zahl1 / zahl2;
+            }
+            //wurde durch Null dividiert?
+            if (divDurchNull == true)
+                labelAnzeige.Text = "Nicht definiert!";
+            else
+                labelAnzeige.Text = Convert.ToString(ergebnis);
+        }
+
+        private void buttonBeenden_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
     }
 }
