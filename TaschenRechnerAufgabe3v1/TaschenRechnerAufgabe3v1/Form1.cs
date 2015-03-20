@@ -19,7 +19,7 @@ namespace TaschenRechnerAufgabe3v1
 
         private void Taschenrechner_Load(object sender, EventArgs e)
         {
-
+            comboBoxRechnenoperation.SelectedIndex = 0;
         }
 
         private void buttonBerechen_Click(object sender, EventArgs e)
@@ -47,13 +47,11 @@ namespace TaschenRechnerAufgabe3v1
             }
 
             //die Rechenoperation ermitteln und ausführen
-            if (radioButtonAddition.Checked == true)
+            if (comboBoxRechnenoperation.SelectedIndex == 0)
                 ergebnis = zahl1 + zahl2;
-            if (radioButtonSubtraktion.Checked == true)
+            if (comboBoxRechnenoperation.SelectedIndex == 1)
                 ergebnis = zahl1 - zahl2;
-            if (radioButtonMultiplikation.Checked == true)
-                ergebnis = zahl1 * zahl2;
-            if (radioButtonDivision.Checked == true)
+            if (comboBoxRechnenoperation.SelectedIndex == 2)
             {
                 //wird eine Division durch Null versucht?
                 if (zahl2 == 0)
@@ -61,16 +59,24 @@ namespace TaschenRechnerAufgabe3v1
                 else
                     ergebnis = zahl1 / zahl2;
             }
+            if (comboBoxRechnenoperation.SelectedIndex == 3)
+                ergebnis = zahl1 * zahl2;
             //wurde durch Null dividiert?
             if (divDurchNull == true)
                 labelAnzeige.Text = "Nicht definiert!";
             else
                 labelAnzeige.Text = Convert.ToString(ergebnis);
+
         }
 
         private void buttonBeenden_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void comboBoxRechnenoperation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
