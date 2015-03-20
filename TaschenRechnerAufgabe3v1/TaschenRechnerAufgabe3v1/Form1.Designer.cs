@@ -46,18 +46,18 @@
             // 
             this.buttonBerechen.Location = new System.Drawing.Point(13, 125);
             this.buttonBerechen.Name = "buttonBerechen";
-            this.buttonBerechen.Size = new System.Drawing.Size(75, 23);
-            this.buttonBerechen.TabIndex = 0;
+            this.buttonBerechen.Size = new System.Drawing.Size(100, 23);
+            this.buttonBerechen.TabIndex = 3;
             this.buttonBerechen.Text = "Berechen";
             this.buttonBerechen.UseVisualStyleBackColor = true;
             this.buttonBerechen.Click += new System.EventHandler(this.buttonBerechen_Click);
             // 
             // buttonBeenden
             // 
-            this.buttonBeenden.Location = new System.Drawing.Point(297, 125);
+            this.buttonBeenden.Location = new System.Drawing.Point(260, 125);
             this.buttonBeenden.Name = "buttonBeenden";
-            this.buttonBeenden.Size = new System.Drawing.Size(75, 23);
-            this.buttonBeenden.TabIndex = 1;
+            this.buttonBeenden.Size = new System.Drawing.Size(100, 23);
+            this.buttonBeenden.TabIndex = 4;
             this.buttonBeenden.Text = "Beenden";
             this.buttonBeenden.UseVisualStyleBackColor = true;
             this.buttonBeenden.Click += new System.EventHandler(this.buttonBeenden_Click);
@@ -68,7 +68,7 @@
             this.labelBeschreibung.Location = new System.Drawing.Point(13, 106);
             this.labelBeschreibung.Name = "labelBeschreibung";
             this.labelBeschreibung.Size = new System.Drawing.Size(51, 13);
-            this.labelBeschreibung.TabIndex = 2;
+            this.labelBeschreibung.TabIndex = 3;
             this.labelBeschreibung.Text = "Ergebnis:";
             // 
             // labelAnzeige
@@ -82,19 +82,19 @@
             // 
             // textBoxZahl1
             // 
-            this.textBoxZahl1.Location = new System.Drawing.Point(13, 13);
+            this.textBoxZahl1.Location = new System.Drawing.Point(12, 12);
             this.textBoxZahl1.Name = "textBoxZahl1";
             this.textBoxZahl1.Size = new System.Drawing.Size(100, 20);
-            this.textBoxZahl1.TabIndex = 4;
+            this.textBoxZahl1.TabIndex = 0;
             this.textBoxZahl1.Text = "0";
             this.textBoxZahl1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxZahl2
             // 
-            this.textBoxZahl2.Location = new System.Drawing.Point(13, 40);
+            this.textBoxZahl2.Location = new System.Drawing.Point(12, 38);
             this.textBoxZahl2.Name = "textBoxZahl2";
             this.textBoxZahl2.Size = new System.Drawing.Size(100, 20);
-            this.textBoxZahl2.TabIndex = 5;
+            this.textBoxZahl2.TabIndex = 1;
             this.textBoxZahl2.Text = "0";
             this.textBoxZahl2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -104,10 +104,10 @@
             this.boxGroupRechenoperation.Controls.Add(this.radioButtonDivision);
             this.boxGroupRechenoperation.Controls.Add(this.radioButtonSubtraktion);
             this.boxGroupRechenoperation.Controls.Add(this.radioButtonAddition);
-            this.boxGroupRechenoperation.Location = new System.Drawing.Point(172, 12);
+            this.boxGroupRechenoperation.Location = new System.Drawing.Point(249, 12);
             this.boxGroupRechenoperation.Name = "boxGroupRechenoperation";
-            this.boxGroupRechenoperation.Size = new System.Drawing.Size(200, 107);
-            this.boxGroupRechenoperation.TabIndex = 6;
+            this.boxGroupRechenoperation.Size = new System.Drawing.Size(123, 107);
+            this.boxGroupRechenoperation.TabIndex = 2;
             this.boxGroupRechenoperation.TabStop = false;
             this.boxGroupRechenoperation.Text = "Rechenoperation";
             // 
@@ -168,6 +168,8 @@
             this.Controls.Add(this.labelBeschreibung);
             this.Controls.Add(this.buttonBeenden);
             this.Controls.Add(this.buttonBerechen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Taschenrechner";
             this.Text = "Ein einfacher Taschenrechner";
             this.Load += new System.EventHandler(this.Taschenrechner_Load);
